@@ -1,14 +1,34 @@
+
+
 from nltk import word_tokenize
+from nltk.corpus import stopwords
 
-def lowercase(text):
 
-	for token in text:
-		token = token.lowercase()
-	return text
 
 def tokenize(text):
 	tokens = word_tokenize(text)
 	return tokens
 
-def remove_stopwords(text):
-	pass
+def lowercase(tokens_list):
+
+	for token in tokens_list:
+		token = token.lower()
+	return tokens_list
+
+def remove_stopwords(tokens_list):
+
+	stopwords_list = set(stopwords.words('english'))
+
+	filtered_tokens = []
+	for token in tokens_list:
+		if token not in stopwords_list:
+			filtered_tokens.append(token)
+
+	return filtered_tokens
+
+def preprocess(text):
+
+
+	tokenized = tokenize(text)
+	lowercased = lowercase(tokenized)
+	return remove_stopwords(lowercased)

@@ -1,6 +1,7 @@
 from utils import clean_text, clean_quotations
 from lxml.etree import iterparse
-from preprocessing import tokenize
+from preprocessing import preprocess
+
 
 class Article(object):
 
@@ -32,4 +33,4 @@ if __name__ == '__main__':
 	path = './datasets/articles-training-byarticle-20181122.xml'
 	res = read_articles_file(path)
 	ar1 = res[0]
-	print(tokenize(ar1.text))
+	print(preprocess(ar1.text))
