@@ -1,5 +1,6 @@
 from gensim.models.doc2vec import Doc2Vec
-from article import Article
+from article import Article, get_handpicked_features
+import numpy as np
 
 
 
@@ -35,3 +36,10 @@ def extract_doc2vec_representations(articles_list, epochs=100, alpha=0.025, mode
 	model = Doc2Vec.load(model_path)
 	for article in articles_list:
 		article.doc2vec_representation = model.infer_vector(article.text, epochs=epochs, alpha=alpha)
+
+def enhance_doc2vec_representations(articles_list):
+
+	for article in articles_list:
+		features_to_add = get_handpicked_features(article)
+		enhanced_doc2vec = np.hstack((article.doc2vec_representation, features_to_add))
+		article.doc2vec_representation = enhanced_doc2vec

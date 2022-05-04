@@ -23,7 +23,7 @@ def create_eval_pipeline(train_articles, train_labels):
 	return pipeline
 
 '''
-Scores a list of articles on the specified pipe lineby predicting its labels
+Scores a list of articles on the specified pipe line by predicting its labels
 and comparing them to the supplied label list
 Parameters:
 	pipeline: The Pipeline object (correctly fit)
@@ -35,7 +35,10 @@ Returns:
 def score(pipeline, articles_list, labels_list):
 
 	eval_list = to_evaluation_format(articles_list)
-	s = pipeline.score(eval_list, labels_list)
+
+	predictions = pipeline.predict(eval_list)
+
+	s = pipeline.score(prdictions, labels_list)
 	print('Basic Score: {}'.format(s))
 	return s
 
@@ -48,14 +51,14 @@ Parameters:
 	labels_list: The correct labels (to which the predictions are compared)
 Returns:
 	predictions: the predicted labels list
-	accuracy:
-	recall:
-	precision:
-	f1-score:
+	accuracy
+	recall
+	precision
+	f1-score
 '''
 def detailed_score(pipeline, articles_list, labels_list):
 
-	print('Calculated scores...')
+	print('Calculating scores...')
 
 	eval_list = to_evaluation_format(articles_list)
 	predictions = pipeline.predict(eval_list)
@@ -66,10 +69,11 @@ def detailed_score(pipeline, articles_list, labels_list):
 	f1_score = 2 * (precision * recall) / (precision + recall)
 
 	print('Detailed Scores: ')
-	print('accuracy: {}'.format(accuracy))
-	print('precision: {}'.format(precision))
-	print('recall: {}'.format(recall))
-	print('f1-score: {}'.format(f1_score))
+	print('Accuracy: {}'.format(accuracy))
+	print('Precision: {}'.format(precision))
+	print('Recall: {}'.format(recall))
+	print('F1-score: {}'.format(f1_score))
+	print('-------------------------------------------')
 
 	return predictions, accuracy, precision, recall, f1_score
 
@@ -81,6 +85,7 @@ Parameters:
 	path: The relative path
 '''
 def save_predictions(predictions_list, path):
+
 
 	print('Saving predictions to path: {}...'.format(path))
 	np.save(path, predictions_list)

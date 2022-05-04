@@ -1,5 +1,6 @@
 from preprocessing import preprocess
 import numpy as np
+import os
 from utils import ALLOWED_PUNCTUATION
 
 '''
@@ -75,6 +76,21 @@ def get_average_sentence_length(sentences):
 	for sentence in sentences:
 		lengths.append(len(sentence))
 	return np.mean(lengths)
+
+def get_biased_word_count(text):
+
+	biased_words = _load_bias_lexicon()
+	count = sum([text.count(w) for w in biased_words])
+	result = float(count)/len(text)
+	return result
+
+
+def _load_bias_lexicon(path = './lexica/', file_name='bias-lexicon.txt'):
+	with open(os.path.join(path, file_name)) as corpus:
+		biased_words = corpus.read().split()
+	return biased_words
+
+
 
 
 if __name__ == "__main__":

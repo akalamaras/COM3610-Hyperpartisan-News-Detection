@@ -54,6 +54,14 @@ def remove_stopwords(tokens_list):
 			filtered_tokens.append(token)
 	return filtered_tokens
 
+def remove_stopwords_untokenized(text):
+
+	stopwords_list = set(stopwords.words('english'))
+	text = ' '.join([word for word in text.split() if word not in stopwords_list])
+	return text
+
+
+
 def preprocess(text):
 	text = clean_quotations(text)
 	text = clean_text(text)
@@ -61,6 +69,12 @@ def preprocess(text):
 	lowercased = lowercase(tokenized)
 	stopworded = remove_stopwords(lowercased)
 	return stopworded
+
+def bert_preprocess(text):
+	text = clean_quotations(text)
+	text = clean_text(text)
+	text = remove_stopwords_untokenized(text)
+	return text
 
 
 
