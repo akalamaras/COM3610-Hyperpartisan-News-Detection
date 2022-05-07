@@ -1,6 +1,8 @@
 # pip install
 
 numpy
+pandas
+csv
 gensim
 sklearn
 transformers
@@ -8,3 +10,4 @@ tensorflow
 tensorflow_hub
 nltk
 lxml
+xml
