@@ -37,6 +37,11 @@ def extract_doc2vec_representations(articles_list, epochs=100, alpha=0.025, mode
 	for article in articles_list:
 		article.doc2vec_representation = model.infer_vector(article.text, epochs=epochs, alpha=alpha)
 
+'''
+Enhances the Doc2Vec model with handpicked features
+Parameters:
+	articles_list: The list of articles
+'''
 def enhance_doc2vec_representations(articles_list):
 
 	for article in articles_list:

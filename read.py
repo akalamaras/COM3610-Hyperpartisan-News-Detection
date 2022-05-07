@@ -41,9 +41,7 @@ def read_articles_file(articles_path, labels_path):
 	# Despite the labels being part of the Article objcet in results, we return the
 	# labels list anyway to make splitting the dataset into train-test easier
 	return results, article_labels
-'''
-TODO
-'''
+
 def read_labels_file(labels_path):
 
 	article_labels = []
@@ -69,6 +67,10 @@ def split_articles(articles, labels, dev_size = 0.5):
 	train_labels, dev_labels, train_articles, dev_articles = train_test_split(labels, articles, test_size=dev_size, shuffle=True)
 	return train_labels, dev_labels, train_articles, dev_articles
 
+'''
+Reorders the test dataset labels based on ID.
+This is necessary due to how the test labels were provided
+'''
 def reorder_labels_file(labels_path):
 	print('Reordering the Test Datasets labels based on id...')
 

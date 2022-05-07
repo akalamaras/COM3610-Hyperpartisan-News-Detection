@@ -6,21 +6,34 @@ from utils import ALLOWED_PUNCTUATION
 import re
 import html
 
-
+'''
+This method was taken from Yeh et. al. (Semeval 2019 Task 4 Submission)
+https://github.com/chialun-yeh/SemEval2019/blob/4cf5b57960100a41943cbba60d7413b0bab100fd/utils.py
+'''
 def _fix(text):
-	'''
-	fix some HTML codes and white spaces (from Jeremy Howard)
-	'''
+
 	text = text.replace('#39;', "'").replace('amp;', '&').replace('#146;', "'").replace('nbsp;', ' ') \
 	.replace('#36;', '$').replace('\\n', "\n").replace('quot;', "'").replace('<br />', "\n").replace('\\"', '"')\
 	.replace('<unk>','u_n').replace(' @.@ ','.').replace(' @-@ ','-').replace('\\', ' \\ ')
 	return html.unescape(text)
 
+'''
+This method was taken from Yeh et. al. (Semeval 2019 Task 4 Submission)
+https://github.com/chialun-yeh/SemEval2019/blob/4cf5b57960100a41943cbba60d7413b0bab100fd/utils.py
+
+Normalizes all quotations in the given text
+'''
 def clean_quotations(text):
 	text = re.sub(r'[`‘’‛⸂⸃⸌⸍⸜⸝]', "'", text)
 	text = re.sub(r'[„“”]|(\'\')|(,,)', '"', text)
 	return text
 
+'''
+This method was taken from Yeh et. al. (Semeval 2019 Task 4 Submission)
+https://github.com/chialun-yeh/SemEval2019/blob/4cf5b57960100a41943cbba60d7413b0bab100fd/utils.py
+
+Cleans the given text
+'''
 def clean_text(text):
 	# remove URLs
 	text = re.sub(r'(www\S+)|(https?\S+)|(href)', ' ', text)
@@ -54,6 +67,9 @@ def remove_stopwords(tokens_list):
 			filtered_tokens.append(token)
 	return filtered_tokens
 
+'''
+Removes stopwords BEFORE tokenizing. Necessary for the BERT classifier
+'''
 def remove_stopwords_untokenized(text):
 
 	stopwords_list = set(stopwords.words('english'))
@@ -61,7 +77,9 @@ def remove_stopwords_untokenized(text):
 	return text
 
 
-
+'''
+Preprocessing method for Doc2Vec classifiers
+'''
 def preprocess(text):
 	text = clean_quotations(text)
 	text = clean_text(text)
@@ -70,6 +88,11 @@ def preprocess(text):
 	stopworded = remove_stopwords(lowercased)
 	return stopworded
 
+'''
+Preprocessing method for the BERT classifier
+(Tokenization happens inside of BERT since we need to add things
+like [CLS] and [SEP] tokens)
+'''
 def bert_preprocess(text):
 	text = clean_quotations(text)
 	text = clean_text(text)

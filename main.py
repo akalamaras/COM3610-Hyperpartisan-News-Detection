@@ -8,6 +8,10 @@ import numpy as np
 import tensorflow_hub as hub
 import tensorflow as tf
 
+
+'''
+Basic Doc2Vec run method
+'''
 def doc2vec_main():
 
 	articles_path = './datasets/articles-training-byarticle-20181122.xml'
@@ -23,11 +27,12 @@ def doc2vec_main():
 	reorder_labels_file(test_labels_path)
 	test, test_labels = read_articles_file(test_articles_path, test_labels_path)
 
-	#
 	train_vector_size=50
 	train_epochs=100
 	train_alpha=0.025
-	# train_doc2vec_model(train, vector_size=train_vector_size, epochs=train_epochs, alpha=train_alpha)
+
+	# IF YOU DO NOT WANT TO TRAIN THE MODEL AGAIN, COMMENT OUT THIS LINE
+	train_doc2vec_model(train, vector_size=train_vector_size, epochs=train_epochs, alpha=train_alpha)
 
 	extract_epochs=100
 	extract_alpha=0.025
@@ -52,6 +57,9 @@ def doc2vec_main():
 	save_predictions(dev_pred, 'predictions/doc2vec_dev_predictions')
 	save_predictions(test_pred, 'predictions/doc2vec_test_predictions')
 
+'''
+Enhanced Doc2Vec run method
+'''
 def doc2vec_enhanced_main():
 
 	articles_path = './datasets/articles-training-byarticle-20181122.xml'
@@ -70,7 +78,9 @@ def doc2vec_enhanced_main():
 	train_vector_size=50
 	train_epochs=100
 	train_alpha=0.025
-	#train_doc2vec_model(train, vector_size=train_vector_size, epochs=train_epochs, alpha=train_alpha)
+
+	# IF YOU DO NOT WANT TO TRAIN THE MODEL AGAIN, COMMENT OUT THIS LINE
+	train_doc2vec_model(train, vector_size=train_vector_size, epochs=train_epochs, alpha=train_alpha)
 
 	extract_epochs=100
 	extract_alpha=0.025
@@ -100,7 +110,9 @@ def doc2vec_enhanced_main():
 	save_predictions(dev_pred, 'predictions/enhanced_doc2vec_dev_predictions')
 	save_predictions(test_pred, 'predictions/enhanced_doc2vec_test_predictions')
 
-
+'''
+Basic BERT run method
+'''
 def bert_main():
 
 	articles_path = './datasets/articles-training-byarticle-20181122.xml'
@@ -142,18 +154,9 @@ def bert_main():
 	loaded_model = load_bert_model('./models/pretrained_bert_model.tf')
 	print(loaded_model.summary())
 
-
-	#predictions = make_predictions(loaded_model, test_input, test_mask, callbacks)
-	#print(predictions)
-
-	#loss, accuracy = loaded_model.evaluate([train_input, train_mask], train_label, verbose=2)
-	#print("Untrained model, accuracy: {:5.2f}%".format(100 * acc))
-
-	#train_predictions = loaded_model.evaluate(train)
-	#print(train_predictions)
-
 if __name__ == '__main__':
 
+    # COMMENT OUT THE CLASSIFIERS YOU DO NOT WISH TO RUN
 	doc2vec_main()
 	doc2vec_enhanced_main()
-	#bert_main()
+	bert_main()

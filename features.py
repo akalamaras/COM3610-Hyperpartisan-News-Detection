@@ -77,6 +77,12 @@ def get_average_sentence_length(sentences):
 		lengths.append(len(sentence))
 	return np.mean(lengths)
 
+'''
+Returns the number of 'biased' words (according to our bias lexicon) present
+in the text in question
+Parameters:
+    text
+'''
 def get_biased_word_count(text):
 
 	biased_words = _load_bias_lexicon()
@@ -84,7 +90,12 @@ def get_biased_word_count(text):
 	result = float(count)/len(text)
 	return result
 
-
+'''
+Loads the bias lexicon according to the path and name
+Parameters:
+    path: The relative path to the bias lexicon
+	file_name: The name of the bias lexicon
+'''
 def _load_bias_lexicon(path = './lexica/', file_name='bias-lexicon.txt'):
 	with open(os.path.join(path, file_name)) as corpus:
 		biased_words = corpus.read().split()

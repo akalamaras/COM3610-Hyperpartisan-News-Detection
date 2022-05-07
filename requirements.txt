@@ -1,0 +1,10 @@
+# pip install
+
+numpy
+gensim
+sklearn
+transformers
+tensorflow
+tensorflow_hub
+nltk
+lxml
