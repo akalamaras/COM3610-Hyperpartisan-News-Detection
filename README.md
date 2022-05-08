@@ -5,6 +5,12 @@ Created as part of COM3610: Dissertation Project for the __University of Sheffie
 Author: Alexandros Kalamaras  
 Supervisor: Nikolaos Aletras
 
+The origin of the idea for the project lies with the project supervisor, Nikolaos Aletras. 
+The software is copyrighted in my name and that of the University of Sheffield.
+
+The datasets for training and testing the models developed herein were taken from PAN-SemEval-Hyperpartisan-News-Detection-19.  
+**Link:** https://webis.de/data/pan-semeval-hyperpartisan-news-detection-19.html
+
 ## Abstract
 
 Politics is an unavoidable part of any modern-day citizen. With the invention of the
