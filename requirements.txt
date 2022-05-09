@@ -1,13 +1,11 @@
-# pip install
+# This software package was made using Python 3.10.4. Pip version 22.0.4 is also needed (other versions most likely work fine as well).
 
-This software package was made using Python 3.10.4. Pip version 22.0.4 is also needed (other versions most likely work fine as well).
-
-numpy - Version 1.22.2
-pandas - Version 1.4.1
-gensim - Version 4.1.2
-sklearn - Version 0.0
-transformers - Version 4.17.0
-tensorflow - version 2.8.0
-tensorflow_hub - Version 0.12.0
-nltk - Version 3.7
-lxml - Version 4.8.0a
+numpy==1.22.2
+pandas==1.4.1
+gensim==4.1.2
+sklearn==0.0
+transformers==4.17.0
+tensorflow==2.8.0
+tensorflow_hub==0.12.0
+nltk==3.7
+lxml==4.8.0a
