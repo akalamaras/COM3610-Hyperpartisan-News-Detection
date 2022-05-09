@@ -1,5 +1,6 @@
 # This software package was made using Python 3.10.4. Pip version 22.0.4 is also needed (other versions most likely work fine as well).
 
+wheel==0.37.1
 numpy==1.22.2
 pandas==1.4.1
 gensim==4.1.2
