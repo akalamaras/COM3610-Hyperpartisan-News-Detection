@@ -31,8 +31,8 @@ def doc2vec_main():
 	train_epochs=100
 	train_alpha=0.025
 
-	# IF YOU DO NOT WANT TO TRAIN THE MODEL AGAIN, COMMENT OUT THIS LINE
-	train_doc2vec_model(train, vector_size=train_vector_size, epochs=train_epochs, alpha=train_alpha)
+	# IF YOU WANT TO TRAIN THE MODEL FROM SCRATCH, UNCOMMENT THIS LINE
+	# train_doc2vec_model(train, vector_size=train_vector_size, epochs=train_epochs, alpha=train_alpha)
 
 	extract_epochs=100
 	extract_alpha=0.025
@@ -79,8 +79,8 @@ def doc2vec_enhanced_main():
 	train_epochs=100
 	train_alpha=0.025
 
-	# IF YOU DO NOT WANT TO TRAIN THE MODEL AGAIN, COMMENT OUT THIS LINE
-	train_doc2vec_model(train, vector_size=train_vector_size, epochs=train_epochs, alpha=train_alpha)
+	# IF YOU WANT TO TRAIN THE MODEL FROM SCRATCH, UNCOMMENT THIS LINE
+	# train_doc2vec_model(train, vector_size=train_vector_size, epochs=train_epochs, alpha=train_alpha)
 
 	extract_epochs=100
 	extract_alpha=0.025
