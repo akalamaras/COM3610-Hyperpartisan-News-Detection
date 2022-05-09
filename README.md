@@ -36,9 +36,11 @@ Networks, Transformers.
 All the necessary dependencies for the project to run as expected are in the **requirements.txt** file.  
 The classifiers can be run by calling **main.py** via the Command Line.
 
-By default, all models will be trained/fine-tuned and evaluated. Any trained Doc2Vec models will be saved in the **models** directory.
+The default settings in **main.py** use the existing doc2vec model in the **models** directory, while the BERT model is fine-tuned like normal.
+If you want to train a doc2vec model from scratch, you can uncomment the specified lines in **main.py**.
 
-1. These models include:
+
+1. The models include:
    * A Doc2Vec model
    * A Doc2Vec model, enhanced with hand-picked features (located in **features.py**)
    * A pre-trained BERT model, which will be fine-tuned.
