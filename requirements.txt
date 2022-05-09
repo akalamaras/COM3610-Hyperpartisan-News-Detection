@@ -8,4 +8,4 @@ transformers==4.17.0
 tensorflow==2.8.0
 tensorflow_hub==0.12.0
 nltk==3.7
-lxml==4.8.0a
+lxml==4.8.0
